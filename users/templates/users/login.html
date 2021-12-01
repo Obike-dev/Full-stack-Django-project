@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% load socialaccount %} {% block head %}
+{% load static %} {% load bootstrap5 %}
+<link rel="stylesheet" href="{% static 'users/css/user-form.css' %}" />
+{% endblock head %} 
+{% block title %}Login{% endblock title %}  
+{% block body %} {% block navbar %}{% endblock navbar %}
+{%block searchbox %} {% endblock searchbox %}
+
+<div class="container login-container">
+  <div class="div-contain-login">
+    <h1>Login</h1>
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="login-div">
+        <div class="inner-login-div">
+          <div class="inner-login-div">{% bootstrap_form form %}</div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-dark login-btn">Login</button>
+    </form>
+    <a
+      class="btn btn-lg btn-google-login btn-block btn-outline"
+      href="{% provider_login_url 'google' %}"
+      ><img src="https://img.icons8.com/color/16/000000/google-logo.png" />
+      Continue with Google</a
+    >
+    <br>
+    <p><a href="{% url 'password_reset' %}" class="forgot-password"> Forgot password? </a> </p>
+    <p class="text-inverse text-center">
+      Don't have an account?
+      <a href="<?= base_url() ?>auth/login" data-abc="true" class="signup">Signup</a>
+    </p>
+  </div>
+</div>
+
+ {% block footer %}{% endblock footer %} {% endblock body %}

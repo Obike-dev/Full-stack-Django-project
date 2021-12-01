@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% load static %} {% load bootstrap5 %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'shoes_app/css/add-shoe-form.css' %}" />
+{% endblock head %}
+{% block title %}Add your Shoe{% endblock title %}  
+
+{% block body %} {% block searchbox %} 
+{% endblock searchbox %}
+
+<div class="container shoe-containing-div">
+  <h1 class="add-shoe-h1">ADD SHOE</h1>
+  <div class="shoe-form-div">
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="add-shoe-div">
+        <div>
+          <hr />
+
+          <p class="optional-img-text">
+            The following fields are optional (shop name, about shop, website,
+            instagram, facebook, twitter). They are used to let users know more
+            about your brand. They will be displayed in the details page
+            alongside the other fields if they are specified. It is recommended
+            to fill them up if you have these fields available.
+          </p>
+         {% bootstrap_form form %}
+        </div>
+      </div>
+
+      <div class="d-grid gap-2 col-6 mx-auto" style="margin-top: 70px">
+        <button class="btn btn-dark" type="submit">Add shoe</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock body %}

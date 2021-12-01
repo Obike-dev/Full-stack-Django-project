@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+
+<link
+  rel="stylesheet"
+  href="{% static 'shoes_app/css/shoe-categories.css' %}"
+/>
+{% endblock head %} 
+{% block title %}Sneakers{% endblock title %}
+{% block body %}
+
+<div class="container shoe-container">
+  <div class="row">
+    {% for each_sneakers in sneakers %}
+    <div class="col-lg-4 col-md-6 col-12 shoe-card">
+      <a
+        href="{% url 'shoes_app:shoe_detail' each_sneakers.slug %}"
+        style="text-decoration: none"
+      >
+        <img
+          src="{{each_sneakers.image1.url}}"
+          alt=""
+          class="shoe-img img-thumbnail"
+          style="margin-bottom: 0%"
+        />
+        <div>
+          <p style="margin-bottom: 0%; color: #000; text-transform: capitalize">
+            {{each_sneakers.name}}
+          </p>
+          {% if each_sneakers.shop_name %}
+          <p style="margin-top: 0%; color: grey; text-transform: capitalize">
+            posted by: {{each_sneakers.shop_name}}
+          </p>
+          {% else %}
+          <p style="margin-top: 0%; color: grey; text-transform: capitalize">
+            posted by: {{each_sneakers.user.username}}
+          </p>
+
+          {% endif %}
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock body %}
+

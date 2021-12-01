@@ -1,0 +1,57 @@
+.about-us {
+  max-width: 85%;
+  margin-top: 100px;
+  margin-left: 100px;
+
+}
+
+.heading {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.about-text {
+  line-height: 30px;
+  margin-top: 15px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.each-div {
+  margin-bottom: 60px;
+}
+
+@media (min-width:250px) and (max-width:414px) {
+  .about-us {
+    margin-left: 0;
+    max-width: 100%;
+  
+  }
+  .about-text {
+    font-size: 20px;
+    line-height: 35px;
+  }
+}
+
+@media (min-width:700px) and (max-width:768px) {
+  .about-us {
+    margin-left: 0;
+    max-width: 100%;
+  
+  }
+  .about-text {
+    font-size: 23px;
+    line-height: 35px;
+  }
+}
+
+@media (min-width:769px) and (max-width:1024px) {
+  .about-us {
+    margin-left: 0;
+    max-width: 100%;
+  
+  }
+  .about-text {
+    font-size: 28px;
+    line-height: 45px;
+  }
+}

@@ -1,0 +1,206 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'users/css/user-profile.css' %}" />
+{% endblock head %} 
+{% block title %}@{{user.username}} Shoe photos{% endblock title %}
+{% block body %} {% block navbar %}{% endblock navbar %} 
+{% block searchbox %}{% endblock searchbox %}
+<header>
+  <div class="container">
+    <div class="profile">
+      <div class="profile-image">
+        {% if user.userprofile.image %}
+
+        <a href="">
+          <img
+            src="{{user.userprofile.image.url}}"
+            width="152px"
+            height="152px"
+            alt=""
+            class="profile-img"
+          />
+        </a>
+
+        {% else %}
+        <img
+          src="{% static 'images/user_default_img.png' %}"
+          width="152px"
+          height="152px"
+          alt=""
+          class="profile-img"
+        />
+
+        {% endif %}
+      </div>
+
+      <div class="profile-user-settings">
+        <h1 class="profile-user-name">{{user.username}}</h1>
+
+        {% if request.user == user %}
+        <a
+          href="{% url 'users:update_profile' user.username %}"
+          class="btn profile-edit-btn"
+          >Edit Profile</a
+        >
+        {% else %}
+        <a
+          href="{% url 'users:update_profile' user.username %}"
+          class="btn profile-edit-btn"
+          style="display: none"
+          >Edit Profile</a
+        >
+
+        {% endif %}
+      </div>
+
+      <div class="profile-bio">
+        <span class="profile-real-name"
+          >{{user.last_name}} {{user.first_name}}
+        </span>
+        <p>{{user.userprofile.bio}} 📷✈️🏕️</p>
+        <h3><a href="">{{user.userprofile.website}}</a></h3>
+      </div>
+    </div>
+    <!-- End of profile section -->
+  </div>
+
+  <!-- End of container -->
+</header>
+
+<main>
+  <div class="container">
+    <hr />
+
+    <div class="div-above-hr">
+      <h4><a href="" style="color: #000"> POSTS</a></h4>
+
+      {% if request.user == user %}
+      <h4><a href="{% url 'shoes_app:add_shoe' %}"> ADD SHOE</a></h4>
+
+      {% else %}
+      <h4 style="display: none">
+        <a href="{% url 'shoes_app:add_shoe' %}">ADD SHOE</a>
+      </h4>
+
+      {% endif %}
+
+    </div>
+
+    <div class="gallery">
+      {% for shoe in shoes %} {% if shoe.user == user %}
+
+         {% if request.user != shoe.user %}
+
+          <a href="{% url 'shoes_app:shoe_detail' shoe.slug  %}" >
+        <div class="gallery-item" tabindex="0">
+          <img
+            src="{{shoe.image1.url}}"
+            class="img-fluid gallery-image img-thumbnail"
+            alt=""
+          />
+
+          <div class="gallery-item-info"></div>
+        </div>
+      </a>
+      {% else %}
+               
+          
+      <button
+        type="button"
+        class="btn"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <div class="gallery-item" tabindex="0">
+          <img
+            src="{{shoe.image1.url}}"
+            class="img-fluid gallery-image img-thumbnail"
+            alt=""
+          />
+
+          <div class="gallery-item-info"></div>
+        </div>
+      </button>
+
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3
+                class="modal-title"
+                id="exampleModalLabel"
+                style="text-transform: capitalize"
+              >
+                {{shoe.name}}
+              </h3>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body" style="text-align: center">
+              <a
+                href="{% url 'shoes_app:shoe_detail' shoe.slug  %}"
+                style="text-decoration: none; color: blue"
+              >
+                <h3>View shoe</h3>
+              </a>
+              <hr />
+              <a
+                href="{% url 'shoes_app:edit_shoe' shoe.slug  %}"
+                style="text-decoration: none; color: rgb(112, 112, 112)"
+              >
+                <h3>Edit shoe</h3>
+              </a>
+
+              <hr />
+
+              <h3 style="text-decoration: none; color: red">
+                <form
+                  method="POST"
+                  action="{% url 'shoes_app:delete_shoe' shoe.slug  %}"
+                >
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-danger">
+                    Delete Shoe
+                  </button>
+                </form>
+              </h3>
+
+     
+            </div>
+            <div class="modal-footer"></div>
+          </div>
+        </div>
+      </div>
+
+
+         {% endif %}
+
+      {% else %}
+      <a href="{% url 'shoes_app:shoe_detail' shoe.slug  %}" style="display:none">
+        <div class="gallery-item" tabindex="0">
+          <img
+            src="{{shoe.image1.url}}"
+            class="img-fluid gallery-image img-thumbnail"
+            alt=""
+          />
+
+          <div class="gallery-item-info"></div>
+        </div>
+      </a>
+      {% endif %} {% endfor %}
+    </div>
+
+ 
+  </div>
+
+</main>
+{% block footer %}{% endblock footer %} {% endblock body %}

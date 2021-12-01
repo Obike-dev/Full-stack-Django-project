@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% load socialaccount %} 
+{% load static %} {% load bootstrap5%} {% block head %}
+<link rel="stylesheet" href="{% static 'users/css/user-form.css' %}" />
+{% endblock head %} 
+{% block title %}Signup{% endblock title %}  
+{% block body %} {% block navbar %}{% endblock navbar %} 
+{% block searchbox %} {% endblock searchbox %}
+
+<div class="container signup-container">
+  <div class="div-contain-signup">
+    <h1>Sign up</h1>
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="signup-div">
+        <div class="inner-signup-div">{% bootstrap_form form %}</div>
+      </div>
+
+      <button type="submit" class="btn btn-dark signup-btn">
+        Create Account
+      </button>
+    </form>
+    <div class="or-container">
+      <div class="line-separator"></div>
+      <div class="or-label">or</div>
+      <div class="line-separator"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        {% if user.is_authenticated %}
+        <p></p>
+        <a
+          class="btn btn-lg btn-google-signup btn-block btn-outline"
+          href="{% url 'login' %}"
+          ><img src="https://img.icons8.com/color/16/000000/google-logo.png" />
+          Continue with Google</a
+        >
+
+        {% else %}
+        <a
+          class="btn btn-lg btn-google-signup btn-block btn-outline"
+          href="{% provider_login_url 'google' %}"
+          ><img src="https://img.icons8.com/color/16/000000/google-logo.png" />
+          Signup with Google</a
+        >
+      </div>
+    </div>
+    {% endif %}
+    <br />
+    <p class="text-inverse text-center">
+      Already have an account?
+      <a href="<?= base_url() ?>auth/login" data-abc="true">Login</a>
+    </p>
+  </div>
+</div>
+
+{% block footer %}{% endblock footer %} {% endblock body %}

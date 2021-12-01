@@ -1,0 +1,100 @@
+body {
+  overflow-x: hidden;
+}
+
+.update-profile-container {
+  width: 931px;
+  height: 1050px;
+  background-color: #f8f9fa;
+  margin-top: 50px;
+  resize: none;
+
+}
+.update-profile-form {
+  width: 350px;
+  margin-left: 430px;
+  margin-top: 80px;
+}
+
+.left-hand-links {
+  margin-top: 10px;
+  margin-left: 40px;
+  float: left;
+}
+.left-links-text {
+  margin-top: 80px;
+  color: #272727;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.vertical-rule {
+  margin-top: 115px;
+  margin-bottom: 10px;
+  border: 1px solid #ced4da;
+  height: 1050px;
+  position: absolute;
+  left: 35%;
+  margin-left: -3px;
+  top: 0;
+}
+
+.edit-user-txtarea {
+  resize: none;
+}
+
+.submit-form-btn {
+  margin-top: 20px;
+  margin-left: 120px;
+}
+
+.delete-btn {
+  margin-top: 50px;
+}
+
+.social {
+  padding-top: 20px;
+}
+
+@media (max-width: 500px) {
+  .update-profile-container {
+    width: 100%;
+    height: 1000px;
+  }
+
+  .update-profile-form {
+    margin-left: 10px;
+    margin-top: 150px;
+    padding-top: 50px;
+    width: 80%;
+    margin: auto;
+  }
+
+  .submit-form-btn {
+    margin: auto;
+  }
+
+  .left-hand-links {
+    position: absolute;
+    top: 1100px;
+  }
+  .left-links-text {
+    margin-top: 25px;
+  }
+  .vertical-rule {
+    display: none;
+  }
+  .button-br {
+    display: none;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 768px) {
+  .update-profile-form {
+    margin-left: 300px;
+  }
+
+  .vertical-rule {
+    display: none;
+  }
+}

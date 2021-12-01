@@ -1,0 +1,154 @@
+{% extends 'base.html' %} {% load static %} {% load bootstrap5 %} 
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'users/css/update-profile.css' %}" />
+
+{% endblock head %}
+{% block title %}Edit Profile - {{user.username}}{% endblock title %} 
+ {% block body %} {% block searchbox %} 
+{% endblock searchbox %}
+<div class="vertical-rule"></div>
+
+<div class="container update-profile-container form-control">
+  <div class="left-hand-links">
+    <a href="" style="text-decoration: none"
+      ><h6 class="left-links-text">Edit profile</h6></a
+    >
+    <a
+      href="{% url 'users:change_password' user.username %}"
+      style="text-decoration: none"
+      ><h6 class="left-links-text">Change password</h6></a
+    >
+
+
+    <button
+    type="button"
+    class="btn btn-secondary delete-btn"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+  >
+    Logout
+  </button>
+
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Logout of account {{user.username}}
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to logout?
+          <!-- <br>
+        Action is not recoverable. -->
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            No
+          </button>
+          <form
+            method="POST"
+            action="{% url 'logout' %}"
+          >
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<br class="button-br">
+
+    <button
+      type="button"
+      class="btn btn-danger delete-btn"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal2"
+    >
+      Delete account
+    </button>
+
+    <div
+      class="modal fade"
+      id="exampleModal2"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Delete account for {{user.username}}
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete your account?
+            <br />
+            Deleting this account will result to deleting every post associated
+            with this account. As such all shoe model posted by this account
+            will be deleted.Your email and profile assoicated with this account
+            will be deleted.
+            <!-- <br>
+          Action is not recoverable. -->
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              No
+            </button>
+            <form
+              method="POST"
+              action="{% url 'users:delete_user' user.username %}"
+            >
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger">Yes</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="update-profile-form">
+        {% bootstrap_form user_form %} {% bootstrap_form profile_form %}
+        <button type="submit" class="btn btn-secondary submit-form-btn">
+          update profile
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock body %}

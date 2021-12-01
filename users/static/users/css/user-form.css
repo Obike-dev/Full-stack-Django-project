@@ -1,0 +1,196 @@
+body {
+  overflow-x: hidden;
+  
+}
+/* height: 800px; */
+
+.signup-div {
+  text-align: center;
+  padding-top: 10px;
+}
+.inner-signup-div {
+  width: 100%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+.signup-btn {
+  border-radius: 30px;
+  padding: 10px 50px;
+  width: 100%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.div-contain-signup {
+  width: 480px;
+  height: 600px;
+  padding: 40px 30px;
+  margin: auto;
+  margin-top: 10px;
+  /* e4e4e4 */
+  /* background-color: #d5d5d5; */
+  /* border-radius: 100px; */
+}
+
+.signup-container {
+  height: 800px;
+
+}
+
+.message {
+  text-align: center;
+}
+
+.ls-pg {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: sans-serif;
+}
+
+.div-contain-login {
+  width: 480px;
+  height: 530px;
+  padding: 40px 30px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 0%;
+}
+
+/* e4e4e4 */
+.inner-login-div {
+  width: 90%;
+  display: block;
+  margin: auto;
+  /* margin-right: auto;
+  margin-left: 10px; */
+  font-family: Arial, Helvetica, sans-serif;
+}
+.login-btn {
+  border-radius: 100px;
+  padding: 10px;
+  width: 83%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-div {
+  text-align: center;
+  padding-top: 10px;
+  
+}
+
+.or-container {
+  align-items: center;
+  color: #ccc;
+  display: flex;
+  margin: 25px 0;
+}
+
+.line-separator {
+  background-color: #ccc;
+  flex-grow: 5;
+  height: 1px;
+}
+
+.or-label {
+  flex-grow: 1;
+  margin: 0 15px;
+  text-align: center;
+}
+.btn-google-signup {
+  color: #545454;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px 1px #ddd;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 20px;
+  border-radius: 100px;
+
+}
+
+.btn-google-login {
+  color: #545454;
+  width: 80%;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px 1px #ddd;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 40px;
+  border-radius: 100px;
+}
+
+.forgot-password {
+  margin-left: 150px;
+}
+
+.div-contain-reset-password {
+  width: 480px;
+  /* height: 400px; */
+  padding: 40px 30px;
+  margin: auto;
+  margin-top: 130px;
+}
+
+@media (min-width:310px) and (max-width:400px) {
+  .inner-login-div {
+    margin-left: 5px;
+  }
+  .login-btn {
+    margin-left: 10px;
+  }
+  .btn-google-login {
+    margin-left: 10px;
+  }
+
+ h1 {
+   display:none;
+ }
+
+ .forgot-password {
+   margin-left: 0%;
+ }
+}
+
+@media(max-width:500px) {
+ .div-contain-login { 
+  width: 400px;
+  /* padding: 0; */
+ }
+
+ .forgot-password {
+   margin-left: 110px;
+ }
+
+ .div-contain-signup {
+   width: 400px;
+ }
+
+ .div-contain-reset-password {
+   width: 350px;
+ }
+
+ h1 {
+   margin-top: 10px;
+ }
+
+
+}
+
+/* background-color: #f2f7fb; */

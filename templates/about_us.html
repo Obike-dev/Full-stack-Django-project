@@ -1,0 +1,118 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/about_us.css' %}" />
+{% endblock head %} 
+{% block title %}About us{% endblock title %}
+{% block body %} {% block searchbox %} 
+{% endblock searchbox %}
+
+<section>
+  <div class="container">
+    <div class="about-us">
+      <div class="each-div">
+        <h1 class="heading">About us</h1>
+        <p class="about-text">
+          Have a business or brand that deals with selling shoes? Don't have
+          enough capital to start up your website?. Don't worry Postyourshoes has
+          you covered. Postyourshoes is a website that deals with the posting of
+          shoe products for businesses, organizations or individuals so anyone
+          around the world can see and patronize your business. When we say
+          posting, what that simply means is putting your shoe brand or business
+          out to the world.
+          <br />
+          You don't have to worry about any kind of payments as this is totally
+          free and available to anyone around the world. We won't and will never
+          ask for your card details.
+          <br />
+          We can also help you locate your favorite shoes. The more users posts
+          their shoe products, the more it is easier for you to find that shoe
+          you saw in your various stores.
+          <br />
+          There is also no limit to the number of shoe products that can be
+          posted here on our website. This might be the turning point in your
+          website why don't you join us right now. We'll be happy to have you as
+          one of our most appreciated users.
+          <br />
+          NOTE shoes can not be sold from this website as this is just a website
+          to help put your business out to the world.
+        </p>
+      </div>
+
+      <div class="each-div">
+        <h1 class="heading">Posting shoes</h1>
+        <p class="about-text">
+          Posting shoes is a very simple procedure. All you really need to do is
+          <a href="{% url 'signup' %}">signup</a> using our form or using your google accounts. If
+          you already have an account, you can simply <a href="{% url 'login' %}">Login</a> and
+          continue. Note you won't be able to post any shoes if you are not
+          signed in or you don't have an account. This is to avoid unauthorized
+          access to your shoe products and to have each user relationships with
+          shoes each particular shoe they have posted or removed.
+          <br />
+          After authenticating your password you can either tap the link on the
+          navigation bar or go to your user profile account and tap on the ADD
+          SHOE link there. You will be prompted to a form which you are going to
+          fill. Note, not all fields are required in the form but it is much
+          better to fill the whole form as this will enhance better experince
+          with other users when they look at the details of your shoe. The
+          fields in the form are fields like the name of the shoe, the shoe
+          brand, some images which are gotten from the user filling the form,
+          price you would like to sell the shoe, your brand social media
+          accounts. E.g Instagram,Twitter,Facebook accounts etc.
+          <br />
+          After filling the form you would see the shoe appear on your profile
+          page and in the category you selected when filling the form. You can
+          then click on the image to see the full detail of the shoe you just
+          created.
+        </p>
+      </div>
+
+      <div class="each-div">
+        <h1 class="heading">Edit shoe</h1>
+        <p class="about-text">
+          If you want to make changes to a shoe you have already posted all you
+          need to do is go to your profile page and click on the EDIT SHOE LINK
+          and you will be directed to the form you used to add a shoe but this
+          time the form will already be filled with the previous information you
+          have already filled about that shoe.
+          <br />
+          You can also delete a shoe. Go to the EDIT SHOE link and scroll down.
+          There is a delete shoe button there and it will handle the removal of
+          that shoe model. Note every information about that shoe will be
+          deleteed.The images,social media accounts etc. Think very well before
+          deleting a shoe as this process cannot be restored.
+        </p>
+      </div>
+
+      <div class="each-div">
+        <h1 class="heading">User profile</h1>
+        <p class="about-text">
+          Your user profile is where you can access and edit all your related
+          data. Your profile is automatically created for you after signing up.
+          You can access your profile by clicking on the user profile icon in
+          the navigation bar.
+          <br />
+          You can edit your profile by clicking on the edit profile button in
+          your user profile page. Data like your profile image, email, username,
+          changing your password, deleting your account etc. can be edited by
+          you in your user profile. Logging out of your account can also be done
+          from our profile.
+        </p>
+      </div>
+
+      <div class="each-div">
+        <h1 class="heading">Privacy policy</h1>
+        <p class="about-text">
+          We don't give out any information you have filled in the form out to
+          any user. We only require your email for resetting your password if
+          needed and sending you updates on our website when needed. NOTE no
+          information can be accessed by any user apart from you. That is why we
+          don't ask for your phone number when filling out your form as we don't
+          want unwanted user access using your phone numbers for malicious
+          activities. Your profile can only be edited by you and no one else.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock body %}

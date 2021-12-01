@@ -1,0 +1,206 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}" />
+{% endblock head %} 
+{% block title %}Postyourshoes{% endblock title %}  
+
+{% block body %}
+
+<section>
+  <div class="top-heading">
+    <h4 class="intro-text">
+      BEST SHOES
+      <br />
+      FOR
+      <br />
+      EVERYONE.
+    </h4>
+    {% if user.is_authenticated %}
+    <div class="button-div" style="display: none">
+      <a href="{% url 'signup' %}" class="btn btn-dark button-txt">Sign Up</a>
+    </div>
+    {% else %}
+
+    <div class="button-div">
+      <a href="{% url 'signup' %}" class="btn btn-dark button-txt">Sign Up</a>
+    </div>
+    {% endif %}
+
+    <div>
+      <img
+        class="top-image"
+        src="/static/images/shoe_images/Churchs-Bletsoe-Jodhpur-Boot-2.jpg"
+        alt=""
+      />
+    </div>
+  </div>
+</section>
+
+<div
+  id="carouselExampleIndicators"
+  class="carousel slide carousel-div"
+  data-bs-ride="carousel"
+>
+  <div class="carousel-indicators">
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide-to="0"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 1"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide-to="1"
+      aria-label="Slide 2"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide-to="2"
+      aria-label="Slide 3"
+    ></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img
+        src="static/images/shoe_images/grey-shoe.webp"
+        class="d-block w-100 carousel-div"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="static/images/shoe_images/32080694_image_750x920.jpg"
+        class="d-block w-100 carousel-div"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="static/images/shoe_images/louis-v.jpg"
+        class="d-block w-100 carousel-div"
+        alt="..."
+      />
+    </div>
+  </div>
+</div>
+
+<div class="container shoe-container">
+  <div class="row">
+    {% for each_sneakers in sneakers|slice:"3" %}
+    <div class="col-lg-4 col-md-4 col-12 shoe-card">
+      <a
+        href="{% url 'shoes_app:shoe_detail' each_sneakers.slug %}"
+        style="text-decoration: none"
+      >
+        <img
+          src="{{each_sneakers.image1.url}}"
+          alt=""
+          class="shoe-img img-thumbnail"
+          style="margin-bottom: 0%"
+        />
+        <div>
+          <p style="margin-bottom: 0%; color: #000; text-transform: capitalize">
+            {{each_sneakers.name}}
+          </p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- </div>
+</div> -->
+
+<div class="">
+  <h4 class="something-good som-good">
+    FIND YOUR POTENTIAL <br />
+    CUSTOMERS HERE
+  </h4>
+  <p class="shoes-p">find customers at postyourshoes.com</p>
+</div>
+
+<div class="third-section"></div>
+
+<div>
+  <h4 class="third-sec-text">
+    POST YOUR SHOES <br />
+    SIGN UP NOW
+    <div>
+      <a href="{% url 'about' %}" class="btn btn-dark learn-more-btn"
+        >Learn more</a
+      >
+    </div>
+  </h4>
+</div>
+
+<div class="container shoe-container-2">
+  <div class="row">
+    {% for shoe in women_shoes|slice:"3" %}
+    <div class="col-lg-4 col-md-4 col-12 shoe-card">
+      <a
+        href="{% url 'shoes_app:shoe_detail' shoe.slug %}"
+        style="text-decoration: none"
+      >
+        <img
+          src="{{shoe.image1.url}}"
+          alt=""
+          class="shoe-img img-thumbnail"
+          style="margin-bottom: 0%"
+        />
+        <div>
+          <p style="margin-bottom: 0%; color: #000; text-transform: capitalize">
+            {{shoe.name}}
+          </p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<section>
+  <h4 class="discover">
+    LET OTHERS DISCOVER <br />
+    WHAT YOU HAVE
+  </h4>
+  <div class="end-div">
+    <h3 class="div-text">
+      Have shoes to sell ? <br />
+      We'll be happy to post <br />
+      them here for you. <br />
+    </h3>
+  </div>
+</section>
+
+<div class="container shoe-container last-shoes-con" style="margin-top: 100px">
+  <div class="row">
+    {% for boot in boots|slice:"3" %}
+    <div class="col-lg-4 col-md-4 col-12 shoe-card">
+      <a
+        href="{% url 'shoes_app:shoe_detail' boot.slug %}"
+        style="text-decoration: none"
+      >
+        <img
+          src="{{boot.image1.url}}"
+          alt=""
+          class="shoe-img img-thumbnail"
+          style="margin-bottom: 0%"
+        />
+        <div>
+          <p style="margin-bottom: 0%; color: #000; text-transform: capitalize">
+            {{boot.name}}
+          </p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- last-img -->
+{% endblock body %} {% block script %} $(document).ready(function () { $(".nav
+li").removeClass("active"); }); {% endblock script %}

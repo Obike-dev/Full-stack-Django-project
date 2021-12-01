@@ -1,0 +1,217 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+
+<link rel="stylesheet" href="{% static 'shoes_app/css/shoe-detail.css' %}" />
+{% endblock head %} 
+{% block title %}{{shoe.name}}{% endblock title %}
+{% block body %}
+
+  <div class="">
+    <div>
+      <a href="{{MEDIA_URL}}{{shoe.image1.url}}">
+        <img src="{{shoe.image1.url}}" class="img-1 img-fluid" alt="" />
+      </a>
+    </div>
+  </div>
+
+  <div class="container other-img">
+    <div class="row">
+      {% if shoe.image2 %}
+      <div class="col-lg-6 col-md-6 col-6 other-img-div space-at-bottom">
+        <a href="{{MEDIA_URL}}{{shoe.image2.url}}">
+          <img class="img-2" src="{{shoe.image2.url}}" alt="" />
+        </a>
+      </div>
+      {% else %}
+
+      <div class="" style="display: none">
+        <a href="">
+          <img class="" src="" />
+        </a>
+      </div>
+      <!-- space-at-bottom -->
+      {% endif %} {% if shoe.image3 %}
+      <div class="col-lg-6 col-md-6 col-6 other-img-div space-at-bottom">
+        <a href="{{MEDIA_URL}}{{shoe.image3.url}}">
+          <img class="img-2" src="{{shoe.image3.url}}" alt="" />
+        </a>
+      </div>
+      {% else %}
+
+      <div class="other-img-div col-lg-6 col-md-6 col-6" style="display: none">
+        <a href="">
+          <img class="img-2" src="" alt="" />
+        </a>
+      </div>
+{% comment %} dont-show {% endcomment %}
+      {% endif %} {% if shoe.image4 %}
+      <div class="col-lg-6 col-md-6 col-sm-12 other-img-div" style="margin-bottom:30px">
+        <a href="{{MEDIA_URL}}{{shoe.image4.url}}">
+          <img class="img-2" src="{{shoe.image4.url}}" alt="" />
+        </a>
+      </div>
+
+      {% else %}
+      <div class="" style="display: none">
+        <a href="">
+          <img class="img-2" src="" alt="" />
+        </a>
+      </div>
+
+      {% endif %} {% if shoe.image5 %}
+      <div class="col-lg-6 col-md-6 col-sm-12 other-img-div img-3-4 ">
+        <a href="{{MEDIA_URL}}{{shoe.image5.url}}">
+          <img class="img-2" src="{{shoe.image5.url}}" alt="" />
+        </a>
+      </div>
+
+      {% else %}
+      <div class="" style="display: none">
+        <a href="">
+          <img class="" src="" alt="" />
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="container below-images-div">
+    <div class="shoe-details-div">
+      <div class="shoe-details-info">
+        <h4 class="shoe-name">{{shoe.name}}</h4>
+        <h5 class="shoe-detail-text">{{shoe.gender}}'s Shoe</h5>
+        <!-- text-decoration: underline -->
+
+        {% if shoe..shop_name %}
+        <span>Brand name:</span>
+        <h6 class="">{{shoe.shop_name}}</h6>
+
+        {% else %}
+        <span style="display: none">Brand name:</span>
+        <h6 class="" style="display: none">{{shoe.shop_name}}</h6>
+        {% endif %} {% if shoe.website %}
+        <span>Website:</span>
+        <h6 class="">
+          <a href="" style="color: grey; text-decoration: none"
+            >{{shoe.website}}</a
+          >
+        </h6>
+        {% else %}
+
+        <span style="display: none">Website:</span>
+        <h6 class="" style="display: none">
+          <a href="" style="color: grey; text-decoration: none; display: none"
+            >{{shoe.website}}</a
+          >
+        </h6>
+        {% endif %} {% if shoe.price %}
+        <span>price:</span>
+        <h6 class="shoe-detail-text">${{shoe.price}}</h6>
+        {% else %}
+        <span style="display: none">price:</span>
+
+        <h6 class="shoe-detail-text" style="display: none">${{shoe.price}}</h6>
+        {% endif %} {% if shoe.about_shop %}
+
+        <p class="brand-detail-head">Brand Detail</p>
+        <div class="shoe-owner-desc">
+          <p class="">{{shoe.about_shop|slice:":444"}}</p>
+        </div>
+
+        {% else %}
+
+        <p class="brand-detail-head" style="display: none">Brand Detail</p>
+        <div class="shoe-owner-desc" style="display: none">
+          <p class="" style="display: none">{{shoe.about_shop|slice:":444"}}</p>
+        </div>
+        {% endif %}
+
+        <!-- d-grid gap-2  -->
+        <div class="like-btn-social">
+        
+
+          <div class="social-icons">
+            {% if shoe.instagram %}
+            <a href="https://www.instagram.com/{{shoe.instagram}}/"
+              ><i class="fab fa-instagram fa-2x"></i
+            ></a>
+
+            <a
+              href="https://www.instagram.com/{{shoe.instagram}}"
+              style="display: none"
+              ><i class="fab fa-instagram fa-2x" style="display: none"></i
+            ></a>
+            {% else %} {% endif %} {% if shoe.twitter %}
+
+            <a href="https://www.twitter.com/{{shoe.twitter}}"
+              ><i class="fab fa-twitter fa-2x"></i
+            ></a>
+
+            {% else %}
+
+            <a
+              href="https://www.twitter.com/{{shoe.twitter}}"
+              style="display: none"
+              ><i class="fab fa-twitter fa-2x" style="display: none"></i
+            ></a>
+            {% endif %} {% if shoe.facebook %}
+            <a href="https://www.facebook.com/{{shoe.facebook}}"
+              ><i class="fab fa-facebook fa-2x"></i
+            ></a>
+
+            {% else %}
+
+            <a
+              href="https://www.facebook.com/{{shoe.facebook}}"
+              style="display: none"
+              ><i class="fab fa-facebook fa-2x" style="display: none"></i
+            ></a>
+
+            {% endif %}
+          </div>
+        </div>
+
+        {% if shoe.shoe_size %}
+        <div style="margin-bottom: 0%">
+          <span class="brand-detail-head" style="text-decoration: underline">
+            Size:
+          </span>
+          <p class="">{{shoe.shoe_size}}</p>
+        </div>
+        {% else %}
+        <div style="margin-bottom: 0%; display: none">
+          <span class="brand-detail-head" style="text-decoration: underline">
+            Size:
+          </span>
+          <p class="">{{shoe.shoe_size}}</p>
+        </div>
+
+        {% endif %}
+
+        <div>
+          <span class="brand-detail-head" style="text-decoration: underline">
+            Category:
+          </span>
+          <p class="">{{shoe.category}}</p>
+        </div>
+
+        <div>
+          <span class="brand-detail-head" style="text-decoration: underline">
+            Shoe Description:
+          </span>
+          <p class="desc">{{shoe.description|slice:"500"}}</p>
+          <p class="shoe-detail-text" style="float: right; color: grey">
+            posted on: {{shoe.posted_at}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+
+{% endblock body %}
