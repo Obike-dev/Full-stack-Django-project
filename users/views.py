@@ -55,7 +55,6 @@ class CustomLoginView(LoginView):
     template_name = 'login.html'
     form_class = LoginForm
     
-
 @login_required
 def update_profile(request,username):
     user = User.objects.get(username=username)
