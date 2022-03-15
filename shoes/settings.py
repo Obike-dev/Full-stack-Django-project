@@ -11,9 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-from django.utils import timezone
-
-
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,12 +22,14 @@ TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5b3lsr)*ac6hyw+$r69nixwyu-orn6tj6i)e4bd3wxi-i+vcy('
+
+with open(os.path.join(BASE_DIR,'secret_key.txt')) as f:
+    SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -149,10 +148,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,"static")
-]
+STATIC_ROOT = os.path.join(BASE_DIR,"static")
+
+
+#Https settings
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False
     
+#Hsts settings
+#SECURE_HSTS_SECONDS = 31536000 #1 year
+#SECURE_HSTS_PRELOAD = True
+#SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,"media")
@@ -177,7 +184,7 @@ LOGIN_REDIRECT_URL = '/'
 # email configs
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'obikebright16@gmail.com'
+EMAIL_HOST_USER = 'developer@postyourshoes.online'
 EMAIL_HOST_PASSWORD = 'rdeclsowtqasqsme'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

@@ -1,0 +1,50 @@
+body {
+  background-color: #fff;
+}
+.shoe-containing-div {
+  max-width: 700px;
+  margin-top: 70px;
+  background-color: #fff;
+}
+
+.add-shoe-h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 50px;
+  color: grey;
+}
+
+.shoe-form-div {
+  margin-top: 40px;
+}
+hr {
+  margin-top: 70px;
+  color: grey;
+}
+.optional-img-text {
+  padding: 30px;
+  text-align: justify;
+  padding-top: 0%;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: gray;
+  margin: 40px auto;
+  max-width: 500px;
+}
+
+.add-shoe-btn {
+  text-align: center;
+}
+@media (max-width: 600px) {
+  body {
+    background-color: #f5f5f5;
+  }
+  .shoe-containing-div {
+    background-color: #f5f5f5;
+  }
+}
+
+@media (min-width:600px) and (max-width:1024px) {
+  .optional-img-text {
+    font-size: 22px;
+  }
+}
